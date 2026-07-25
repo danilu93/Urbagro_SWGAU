@@ -26,7 +26,7 @@ namespace SWGAU.Models.Modelos
         public string? Observaciones { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "La fecha de siembra es obligatoria.")]
-        [Display(Name = "Fecha de Siembra")]
+        [Display(Name = "Fecha de Siembra")] 
         [DataType(DataType.Date)]
         public DateTime FechaSiembra { get; set; }
 
@@ -38,8 +38,8 @@ namespace SWGAU.Models.Modelos
         [Display(Name = "Fecha de Registro")]
         public DateTime FechaRegistro { get; set; } = DateTime.Now;
 
-        // public List<Irrigacion>? Irrigaciones { get; set; } 
-        // public List<Abono>? Abonos { get; set; } 
+       public List<Irrigacion>? Irrigaciones { get; set; } 
+       public List<Abono>? Abonos { get; set; } 
 
 
     }

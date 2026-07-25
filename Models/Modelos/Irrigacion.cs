@@ -8,7 +8,7 @@ namespace SWGAU.Models.Modelos
     public class Irrigacion
     {
        
-        public int RiegoId { get; set; }
+        public int IrrigacionId { get; set; }
 
         [Required] 
         [Display(Name = "Planta")]
@@ -27,6 +27,7 @@ namespace SWGAU.Models.Modelos
         public FrecuenciaRiego FrecuenciaRiego { get; set; }
 
         [Required(ErrorMessage = "La duración del riego es obligatoria.")]
+        [Column(TypeName = "decimal(6,2)")]
         [Display(Name = "Duración del Riego (min)")]
         public decimal? DuracionRiego { get; set; }
 

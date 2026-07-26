@@ -1,0 +1,27 @@
+﻿@page
+@model SWGAU.Pages.RegistroUsuarioModel
+@using SWGAU.Models
+@{
+    ViewData["Title"] = "Crear cuenta";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>SWGAU - Crear cuenta</title>
+        <link rel="stylesheet" href="~/css/site.css" />
+    </head>
+    <body class="login-body">
+        <div class="login--card">
+            <h1>Urbagro</h1>
+            <p class="subtitle">Crear una cuenta nueva</p>
+
+            @if (!string.IsNullOrEmpty(Model.MensajeError))
+            {
+                <div class="alert alert-error">@Model.MensajeError</div>
+            }
+        </div>
+    </body>
+</html>

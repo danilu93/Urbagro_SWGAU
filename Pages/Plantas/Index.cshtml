@@ -1,0 +1,58 @@
+﻿@page
+@model SWGAU.Pages.Plantas.IndexModel
+@using SWGAU.Models.Enums
+@{
+    ViewData["Title"] = "Plantas";
+}
+
+<div class="page-header">
+    <h1>Gestión de plantas</h1>
+    <a asp-page="Create" class="btn btn-primary">+ Nueva planta</a>
+</div>
+
+<form method="get" class="search-bar">
+    <input type="text" name="filtro" value="@Model.Filtro" placeholder="Buscar por nombre..." class="form-control" />
+
+    <select name="filtroTipo" class="form-control" asp-items="Html.GetEnumSelectList<TipoPlanta>()">
+        <option value="">Todos los tipos</option>
+    </select>
+
+    <button type="submit" class="btn btn-secondary">Buscar</button>
+</form>
+
+@if (TempData["Mensaje"] != null )
+{
+    <div class="alert alert-success">@TempData["Mensaje"]</div>
+}
+
+<table class="tabla">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Fecha de siembra</th>
+            <th>Fecha de registro</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var planta in Model.Plantas)
+        {
+            <tr>
+                <td>@planta.NombrePlanta</td>
+                <td>@planta.TipoPlanta</td>
+                <td>@planta.FechaSiembra.ToString("dd/MM/yyyy")</td>
+                <td>@planta.FechaRegistro.ToString("dd/MM/yyyy")</td>
+                <td class="acciones">
+                    <a asp-page="Details" asp-route-id="@planta.PlantaId" class="link-ver">Ver</a>
+                    <a asp-page="Edit" asp-route-id="@planta.PlantaId" class="link-editar">Editar</a>
+                    <a asp-page="Delete" asp-route-id="@planta.PlantaId" class="link-eliminar">Eliminar</a>
+                </td>
+            </tr>
+        }
+        @if (!Model.Plantas.Any())
+        {
+            <tr><td colspan="5" class="sin-datos">No se encontraron plantas registradas</td></tr>
+        }
+    </tbody>
+</table>

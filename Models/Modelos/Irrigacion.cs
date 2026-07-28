@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SWGAU.Models.Modelos
 {
+    // Clase de modelo para representar un registro de irrigación en la base de datos
     public class Irrigacion
     {
        

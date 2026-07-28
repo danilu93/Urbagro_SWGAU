@@ -1,0 +1,44 @@
+﻿@page
+@model SWGAU.Pages.LoginModel
+@{
+    ViewData["Title"] = "Iniciar sesión";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>SWGAU - Iniciar sesión</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="login-body">
+    <div class="login-card">
+        <h1>Urbagro</h1>
+        <p class="subtitle">Sistema Web de Gestión Agrícola</p>
+
+        @if (!string.IsNullOrEmpty(Model.MensajeError))
+        {
+            <div class="alert alert-error">@Model.MensajeError</div>
+        }
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="NombreUsuario">Usuario</label>
+                <input asp-for="NombreUsuario" class="form-control" autofocus />
+            </div>              
+            <div class="form-group">
+                <label asp-for="Contrasena">Contraseña</label>
+                <input asp-for="Contrasena" type="password" class="form-control" autofocus />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+        </form>
+
+        <p class="subtitle" style="margin-top: 20px;">
+            <a asp-page="/RegistroUsuario">¿No tienes una cuenta? Registrate aquí.</a>
+            </p>
+        </div>
+    </body>
+</html>
+
+        

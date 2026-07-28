@@ -1,0 +1,33 @@
+﻿@page "{id:int}"
+@model SWGAU.Pages.Plantas.DeleteModel
+@{
+    ViewData["Title"] = "Eliminar planta";
+}
+
+<h1>Eliminar planta</h1>
+
+<div class="alert alert-error">
+    ¿Está seguro de que desea eliminar la siguiente planta? Esta acción también eliminará su historial de riego y abono, y no se puede deshacer.
+</div>
+
+<dl class="detalle">
+    <dt>Nombre</dt>
+    <dd>@Model.Planta.NombrePlanta</dd>
+
+    <dt>Tipo</dt>
+    <dd>@Model.Planta.TipoPlanta</dd>
+
+    <dt>Fecha de siembra</dt>
+    <dd>@Model.Planta.FechaSiembra.ToString("dd/MM/yyyy")</dd>
+
+    <dt>Fecha de registro</dt>
+    <dd>@Model.Planta.FechaRegistro.ToString("dd/MM/yyyy")</dd>
+</dl>
+
+<form method="post">
+    <input type="hidden" asp-for="Planta.PlantaId" />
+    <div class="botones">
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>

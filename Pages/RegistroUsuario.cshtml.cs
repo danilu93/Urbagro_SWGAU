@@ -8,6 +8,8 @@ using SWGAU.Models.Modelos;
 
 namespace SWGAU.Pages
 {
+
+    // Clase de modelo para la página de registro de usuario
     public class RegistroUsuarioModel : PageModel
     {
 
@@ -18,7 +20,7 @@ namespace SWGAU.Pages
             _context = context;
         }
 
-        [BindProperty]
+        [BindProperty] // Vincula los datos del formulario a la propiedad Input
         public RegistroInput Input { get; set; } = new();
 
         public string? MensajeError { get; set; }
@@ -26,7 +28,7 @@ namespace SWGAU.Pages
         {
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync() // Maneja la solicitud POST cuando el usuario envía el formulario de registro
         {
             if (!ModelState.IsValid)
             {
@@ -58,7 +60,7 @@ namespace SWGAU.Pages
                 Activo = true
             };
 
-            usuario.ContrasenaHash = BCrypt.Net.BCrypt.HashPassword(Input.Contrasena);
+            usuario.ContrasenaHash = BCrypt.Net.BCrypt.HashPassword(Input.Contrasena); // Hashea la contraseña antes de guardarla en la base de datos
 
             _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
@@ -67,7 +69,7 @@ namespace SWGAU.Pages
 
         }
 
-        public class RegistroInput
+        public class RegistroInput // Clase interna para representar los datos de entrada del formulario de registro
         {
             [Required(ErrorMessage = "El nombre de usuario es obligatorio.")]
             [StringLength(50, ErrorMessage = "Debe tener máximo 50 caracteres.")]

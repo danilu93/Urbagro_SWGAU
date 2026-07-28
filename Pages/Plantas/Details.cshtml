@@ -1,0 +1,35 @@
+﻿@page "{id:int}"
+@model SWGAU.Pages.Plantas.DetailsModel
+@{
+    ViewData["Title"] = "Detalle de planta";
+}
+
+<h1>Detalle de planta</h1>
+
+<dl class="detalle">
+    <dt>Nombre</dt>
+    <dd>@Model.Planta.NombrePlanta</dd>
+
+    <dt>Nombre científico</dt>
+    <dd>@(string.IsNullOrEmpty(Model.Planta.NombreCientifico) ? "-" : Model.Planta.NombreCientifico)</dd>
+
+    <dt>Tipo</dt>
+    <dd>@Model.Planta.TipoPlanta</dd>
+
+    <dt>Fecha de siembra</dt>
+    <dd>@Model.Planta.FechaSiembra.ToString("dd/MM/yyyy")</dd>
+
+    <dt>Método de siembra</dt>
+    <dd>@(string.IsNullOrEmpty(Model.Planta.MetodoSiembra) ? "-" : Model.Planta.MetodoSiembra)</dd>
+
+    <dt>Observaciones</dt>
+    <dd>@(string.IsNullOrEmpty(Model.Planta.Observaciones) ? "-" : Model.Planta.Observaciones)</dd>
+
+    <dt>Fecha de registro</dt>
+    <dd>@Model.Planta.FechaRegistro.ToString("dd/MM/yyyy")</dd>
+</dl>
+
+<div class="botones">
+    <a asp-page="Edit" asp-route-id="@Model.Planta.PlantaId" class="btn btn-primary">Editar</a>
+    <a asp-page="Index" class="btn btn-secondary">Volver</a>
+</div>

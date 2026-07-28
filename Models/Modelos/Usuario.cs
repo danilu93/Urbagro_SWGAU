@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SWGAU.Models.Modelos
 {
+    // Clase de modelo para representar un usuario en la base de datos
     public class Usuario 
     { 
         public int UsuarioId { get; set; }

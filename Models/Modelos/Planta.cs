@@ -1,16 +1,15 @@
-﻿using Microsoft.Identity.Client;
-using SWGAU.Models.Enums;
+﻿using SWGAU.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace SWGAU.Models.Modelos
 {
+    // Clase de modelo para representar una planta en la base de datos
     public class Planta
     {
         public int PlantaId { get; set; }
 
         [Required(ErrorMessage = "El tipo de planta es obligatorio.")]
         [Display(Name = "Tipo de Planta")]
-        [StringLength(100)]
         public TipoPlanta TipoPlanta { get; set; }
 
         [Required(ErrorMessage = "El nombre de la planta es obligatorio.")]

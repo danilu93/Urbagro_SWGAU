@@ -4,12 +4,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using SWGAU.Models;
 using SWGAU.Models.Modelos;
 
+// Page para editar los datos de una planta
+
 namespace SWGAU.Pages.Plantas
 {
     [Authorize]
     public class EditModel : PageModel
     {
-        private readonly AppDbContext _context;
+        private readonly AppDbContext _context;  // Contexto de base de datos
 
         public EditModel(AppDbContext context)
         {
@@ -17,8 +19,9 @@ namespace SWGAU.Pages.Plantas
         }
 
         [BindProperty]
-        public Planta Planta { get; set; } = new();
+        public Planta Planta { get; set; } = new();  // Planta a editar
 
+        // Carga los datos de la planta para mostrar en el formulario
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var planta = await _context.Plantas.FindAsync(id);
@@ -28,6 +31,7 @@ namespace SWGAU.Pages.Plantas
             return Page();
         }
 
+        // Guarda los cambios realizados en el formulario
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid) return Page();
@@ -35,6 +39,7 @@ namespace SWGAU.Pages.Plantas
             var plantaExistente = await _context.Plantas.FindAsync(Planta.PlantaId);
             if (plantaExistente == null) return RedirectToPage("Index");
 
+            // Actualiza los campos de la planta existente
             plantaExistente.NombrePlanta = Planta.NombrePlanta;
             plantaExistente.NombreCientifico = Planta.NombreCientifico;
             plantaExistente.TipoPlanta = Planta.TipoPlanta;

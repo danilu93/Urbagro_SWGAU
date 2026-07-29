@@ -1,9 +1,9 @@
 ﻿namespace SWGAU.Models.Enums
 {
-    // Enumeraciones para el tipo de abono
+    // Enum que define los tipos de abono para las plantas.
     public enum TipoAbono
     {
-        Liquido,
-        Solido
+        Liquido, 
+        Solido   
     }
 }

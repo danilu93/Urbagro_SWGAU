@@ -4,12 +4,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using SWGAU.Models;
 using SWGAU.Models.Modelos;
 
+// Page para eliminar una planta
+
 namespace SWGAU.Pages.Plantas
 {
     [Authorize]
     public class DeleteModel : PageModel
     {
-        private readonly AppDbContext _context;
+        private readonly AppDbContext _context;  // Contexto de base de datos
 
         public DeleteModel(AppDbContext context)
         {
@@ -17,8 +19,9 @@ namespace SWGAU.Pages.Plantas
         }
 
         [BindProperty]
-        public Planta Planta { get; set; } = new();
+        public Planta Planta { get; set; } = new();  // Planta a eliminar
 
+        // Carga los datos de la planta para confirmar la eliminación
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var planta = await _context.Plantas.FindAsync(id);
@@ -28,6 +31,7 @@ namespace SWGAU.Pages.Plantas
             return Page();
         }
 
+        // Elimina la planta de la base de datos
         public async Task<IActionResult> OnPostAsync()
         {
             var planta = await _context.Plantas.FindAsync(Planta.PlantaId);

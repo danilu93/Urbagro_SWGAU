@@ -1,10 +1,10 @@
 ﻿namespace SWGAU.Models.Enums
 {
-    // Enumeración para los roles de usuario
+    // Enum que define los roles de usuario.
     public enum RolUsuario
     {
-        Administrador,
-        GestorAgricola,
-        Consulta
+        Administrador,  
+        GestorAgricola, 
+        Consulta        
     }
 }
